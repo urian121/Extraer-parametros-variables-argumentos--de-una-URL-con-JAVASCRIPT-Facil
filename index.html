@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extraer parametros de una URL con JavaScript</title>
+</head>
+<body>
+<!--Extraer parámetros de URL con JavaScript-->
+<!--Obtener parámetros de la url con Javascript-->
+<!--Cómo obtener los PARÁMETROS de la url con javascript-->
+<!--JavaScript Obtener parámetros de URL-->
+<!--https://concamilo.com/como-obtener-los-parametros-de-la-url-con-javascript/-->
+
+
+<p>
+  http://localhost:5000/oficinas/editar?id=80
+
+  El valor de window.location.search es "?id=80"
+</p>
+
+  <script>
+/*video Juan */
+    const parametrosURL = new URLSearchParams(window.location.search);
+    const idx = parametrosURL.get('id');
+    const idy = parametrosURL.getAll('nome'); /*precticar*/
+    console.log(idx, idy);
+
+
+
+
+    //Mostramos los valores en consola:
+const valores = window.location.search;
+console.log(valores);
+
+//Creamos la instancia
+const urlParams = new URLSearchParams(valores);
+
+//Accedemos a los valores
+var producto = urlParams.get('codcow');
+console.log(producto)
+
+var nomenclatura = document.getElementById("nomenclatura");
+      nomenclatura.value = "nomenclatura: " + nomenclatura;
+
+var myemilUser = urlParams.get('myemilUser');
+console.log(myemilUser)
+
+
+//Usando URLSearchParams
+//Si creamos una nueva instancia de URLSearchParams enviando el valor previamente visto, 
+//podremos acceder a varios métodos para extraer los valores de la URL. Aquí el ejemplo:
+
+const urlSearchParams = new URLSearchParams(window.location.search);
+const id = urlSearchParams.get("id");
+console.log("El id es:", id);
+
+//Al crear la instancia de URLSearchParams podemos invocar al método get pasándole el nombre 
+//del valor que queremos obtener. 
+
+  </script>
+</body>
+</html>
