@@ -5,59 +5,87 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Extraer parametros de una URL con JavaScript</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
-<!--Extraer parámetros de URL con JavaScript-->
-<!--Obtener parámetros de la url con Javascript-->
-<!--Cómo obtener los PARÁMETROS de la url con javascript-->
-<!--JavaScript Obtener parámetros de URL-->
-<!--https://concamilo.com/como-obtener-los-parametros-de-la-url-con-javascript/-->
+
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col col-lg-2">
+  
+        <h1 class="mb-5" style="text-align:center; margin-top:100px; font-weight: 800;font-size: 50px;">
+          Extraer parametros de una URL con JavaScript 😲
+        </h1>
+
+        <p>Mostrando parametros:</p>
+        <input type="text" name="valores" id="valores" class="form-control">
+        <p id="valores"> -- --</p>
+
+      </div>
+    </div>
+</div>
 
 
-<p>
-  http://localhost:5000/oficinas/editar?id=80
-
-  El valor de window.location.search es "?id=80"
-</p>
-
-  <script>
-/*video Juan */
-    const parametrosURL = new URLSearchParams(window.location.search);
-    const idx = parametrosURL.get('id');
-    const idy = parametrosURL.getAll('nome'); /*precticar*/
-    console.log(idx, idy);
+<script>
+/*
+Buscand los valores de la URL
+*/
+const queryURL = window.location.search
+console.log(queryURL)
 
 
+//usaremos la propiedad window.location.search de JavaScript
+const valoresURL = window.location.search;
+
+//Creamos una instancia de URLSearchParams
+const parametrosURL = new URLSearchParams(valoresURL);
+console.info(parametrosURL);
+
+/*
+Recorriendo todos los parametros de la URL */
+for (let p of parametrosURL) {
+  console.log(p);
+}
 
 
-    //Mostramos los valores en consola:
-const valores = window.location.search;
-console.log(valores);
-
-//Creamos la instancia
-const urlParams = new URLSearchParams(valores);
-
-//Accedemos a los valores
-var producto = urlParams.get('codcow');
-console.log(producto)
-
-var nomenclatura = document.getElementById("nomenclatura");
-      nomenclatura.value = "nomenclatura: " + nomenclatura;
-
-var myemilUser = urlParams.get('myemilUser');
-console.log(myemilUser)
+/*
+Para acceder a los parámetros de la URL crearemos un objeto de tipo URLSearchParams y 
+usaremos el método get() para obtener cada uno de los valores
+*/
+const empleado = parametrosURL.get('empleado');
+const tlfEmpleado = parametrosURL.get('tlf');
 
 
-//Usando URLSearchParams
-//Si creamos una nueva instancia de URLSearchParams enviando el valor previamente visto, 
-//podremos acceder a varios métodos para extraer los valores de la URL. Aquí el ejemplo:
+for (let p of parametrosURL) {
+  console.log(p);
+}
+
+console.info(tlfEmpleado);
+
+const param = document.querySelector("#valores");
+      param.value =(tlfEmpleado);
+
 
 const urlSearchParams = new URLSearchParams(window.location.search);
-const id = urlSearchParams.get("id");
-console.log("El id es:", id);
+const nombreEmpleado = urlSearchParams.get("empleado");
+console.log("El empleado es:", nombreEmpleado); 
 
-//Al crear la instancia de URLSearchParams podemos invocar al método get pasándole el nombre 
-//del valor que queremos obtener. 
+
+/*
+Como podemos verificar si existe el parámetro en la URL
+*/
+const urlParametros = new URLSearchParams(window.location.search); //Creamos la instancia
+let valorURL = urlParametros.has('tlf');
+console.log(valorURL);
+
+
+
+
+const myURL = new URL('https://example.org/?par=parval&foo=fooval&bar=barval');
+myURL.searchParams.forEach(function(value, key) {
+  console.log(key,value);
+});
+
 
   </script>
 </body>
